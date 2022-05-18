@@ -17,6 +17,11 @@ spec:
     volumeMounts:
       - name: kaniko-secret
         mountPath: /kaniko/.docker
+  - name: tools
+    image: argoproj/argo-cd-ci-builder:v1.0.0
+    command:
+    - cat
+    tty: true
   volumes:
     - name: kaniko-secret
       secret:
