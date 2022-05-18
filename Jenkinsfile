@@ -20,7 +20,7 @@ pipeline {
             sh '''
             /kaniko/executor --dockerfile `pwd`/Dockerfile \
                              --context `pwd` \
-                             --destination=madhubala1997/myweb:${BUILD_NUMBER}
+                             --destination=madhubala1997/rsvp:${env.GIT_COMMIT}
             '''
           }
         }
