@@ -15,12 +15,7 @@ pipeline {
       IMAGE_REPO = "madhubala1997/rsvp"
   }
   stages {
-     stage('Mvn Package'){
-        def mvnHome = tool name: 'Maven_test' , type: 'maven'
-        def mvnCMD = "${mvnHome}/bin/mvn"
-        sh "${mvnCMD} clean package"
-        }
-
+     
      stage('Build & Push Image') {
       steps {
         container('kaniko') {
