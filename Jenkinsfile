@@ -17,10 +17,11 @@ pipeline {
       steps {
         container('kaniko') {
           script {
+            sh "echo ${env.GIT_COMMIT}"
             sh '''
             /kaniko/executor --dockerfile `pwd`/Dockerfile \
                              --context `pwd` \
-                             --destination=madhubala1997/rsvp:${env.GIT_COMMIT}
+                             --destination=madhubala1997/rsvp:${BUILD_NUMBER}
             '''
           }
         }
