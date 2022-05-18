@@ -23,7 +23,7 @@ pipeline {
             sh '''
             /kaniko/executor --dockerfile `pwd`/Dockerfile \
                              --context `pwd` \
-                             --destination=madhubala1997/rsvp:${env.GIT_COMMIT}
+                             --destination=madhubala1997/rsvp:$GIT_COMMIT
             '''
           }
         }
