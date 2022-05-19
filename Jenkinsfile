@@ -1,14 +1,14 @@
 pipeline {
    post {
 
-    failure {
+    success {
 
-        office365ConnectorSend status: "FAILURE", webhookUrl: "$WEBHOOK", color: "d00000"
+        office365ConnectorSend status: "Success", webhookUrl: "$WEBHOOK", color: "d00000"
 
     }
 
   }
-  agen {
+  agent {
     kubernetes {
       label 'jenkins-slave'
              defaultContainer 'jnlp'
