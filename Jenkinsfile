@@ -1,7 +1,9 @@
 pipeline {
 
   options {
-    ansiColor('xterm')
+        office365ConnectorWebhooks([
+            [name: "Office 365", url: "${URL_WEBHOOK}", notifyBackToNormal: true, notifyFailure: true, notifyRepeatedFailure: true, notifySuccess: true, notifyAborted: true]
+        ])
   }
 
   agent {
