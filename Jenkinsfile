@@ -6,7 +6,11 @@ pipeline {
         office365ConnectorSend status: "failure", webhookUrl: "$WEBHOOK", color: "d00000"
 
     }
+     failure {
 
+        office365ConnectorSend status: "Build failed", webhookUrl: "$WEBHOOK", color: "d00000"
+
+    }
   }
   agent {
     kubernetes {
