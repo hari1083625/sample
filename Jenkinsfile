@@ -62,12 +62,5 @@ pipeline {
         }
       }
     } 
-    stage('Send Teams Notification'){
-      steps {
-        office365ConnectorSend webhookUrl: "${https://mindtreeonline.webhook.office.com/webhookb2/329f59da-c0a6-4edb-b0a1-cbd712509488@85c997b9-f494-46b3-a11d-772983cf6f11/IncomingWebhook/716048a3dbcb4ebebc91cdbbf1c536a1/961ab056-0929-4c45-9d67-de9017c84fb0}",
-        message: 'Code is deployed',
-        status: 'Success'            
-      }
-   }
   }
 }
