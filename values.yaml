@@ -7,7 +7,7 @@ image:
   repository: madhubala1997/rsvp
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "4e67af3852858f2221ffeb95af20df362e561b7f"
+  tag: "663afc376a53d87dd7edd7e2c0f75a875757b5ba"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
