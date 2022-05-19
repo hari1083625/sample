@@ -1,9 +1,9 @@
 pipeline {
    post {
 
-    success {
+    unsuccessful {
 
-        office365ConnectorSend status: "Success", webhookUrl: "$WEBHOOK", color: "d00000"
+        office365ConnectorSend status: "failure", webhookUrl: "$WEBHOOK", color: "d00000"
 
     }
 
@@ -73,4 +73,3 @@ pipeline {
       }
     } 
   }
-}
