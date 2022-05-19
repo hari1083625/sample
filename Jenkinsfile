@@ -3,7 +3,7 @@ pipeline {
         office365ConnectorWebhooks([[
                     startNotification: true,
                     notifySuccess: true,
-                    notifyFailed: true,
+                    notifyFailure: true,
                     notifyAborted: true,
                     notifyBackToNormal: true,
                     notifyNotBuilt: true,
