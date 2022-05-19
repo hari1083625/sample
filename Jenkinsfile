@@ -3,7 +3,7 @@ pipeline {
 
     success {
 
-        office365ConnectorSend message: "${nodeName} is Offline!", status: "Success", webhookUrl: "$WEBHOOK", color: "d00000"
+        office365ConnectorSend message: status: "Success", webhookUrl: "$WEBHOOK", color: "d00000"
 
     }
 
