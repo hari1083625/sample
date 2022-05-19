@@ -1,18 +1,9 @@
 pipeline {
-   post {
-
-    success {
-
-        office365ConnectorSend status: "Success", webhookUrl: "$WEBHOOK", color: "d00000"
-
+   options {
+        office365ConnectorWebhooks([
+            [name: "Office 365", url: "$WEBHOOK", notifyBackToNormal: true, notifyFailure: true, notifyRepeatedFailure: true, notifySuccess: true, notifyAborted: true]
+        ])
     }
-      
-    failure {
-
-        office365ConnectorSend status: "Failure", webhookUrl: "$WEBHOOK", color: "FF0000"
-
-    }
-  }
   agent {
     kubernetes {
       label 'jenkins-slave'
@@ -78,4 +69,4 @@ pipeline {
       }
     } 
   }
-
+}
