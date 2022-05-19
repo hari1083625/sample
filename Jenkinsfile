@@ -1,9 +1,9 @@
 pipeline {
    options {
         office365ConnectorWebhooks([[
+                    notifyFailure: true,
                     startNotification: true,
                     notifySuccess: true,
-                    notifyFailure: false,
                     notifyAborted: true,
                     notifyBackToNormal: true,
                     notifyNotBuilt: true,
