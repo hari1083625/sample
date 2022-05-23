@@ -1,17 +1,17 @@
 pipeline {
-//    options {
-//         office365ConnectorWebhooks([[
-//                     startNotification: true,
-//                     notifySuccess: true,
-//                     notifyFailure: true,
-//                     notifyAborted: true,
-//                     notifyBackToNormal: true,
-//                     notifyNotBuilt: true,
-//                     notifyRepeatedFailure: true,
-//                         url: '''https://mindtreeonline.webhook.office.com/webhookb2/329f59da-c0a6-4edb-b0a1-cbd712509488@85c997b9-f494-46b3-a11d-772983cf6f11/IncomingWebhook/716048a3dbcb4ebebc91cdbbf1c536a1/961ab056-0929-4c45-9d67-de9017c84fb0'''
-//             ]]
-//         )
-//     }  
+   options {
+        office365ConnectorWebhooks([[
+                    startNotification: true,
+                    notifySuccess: true,
+                    notifyFailure: true,
+                    notifyAborted: true,
+                    notifyBackToNormal: true,
+                    notifyNotBuilt: true,
+                    notifyRepeatedFailure: true,
+                        url: '''https://mindtreeonline.webhook.office.com/webhookb2/329f59da-c0a6-4edb-b0a1-cbd712509488@85c997b9-f494-46b3-a11d-772983cf6f11/IncomingWebhook/716048a3dbcb4ebebc91cdbbf1c536a1/961ab056-0929-4c45-9d67-de9017c84fb0'''
+            ]]
+        )
+    }  
   agent {
     kubernetes {
       label 'jenkins-slave'
@@ -21,6 +21,7 @@ pipeline {
   }
   environment {
       IMAGE_REPO = "madhubala1997/rsvp"
+      REPO = "rsvp"
       WEBHOOK = "https://mindtreeonline.webhook.office.com/webhookb2/329f59da-c0a6-4edb-b0a1-cbd712509488@85c997b9-f494-46b3-a11d-772983cf6f11/JenkinsCI/22f5c0f87ca8436a82684dc70b5d509b/961ab056-0929-4c45-9d67-de9017c84fb0"
   }
   
@@ -34,18 +35,10 @@ pipeline {
             sh '''
             /kaniko/executor --dockerfile `pwd`/Dockerfile \
                              --context `pwd` \
-                             --destination=madhubala1997/rsvp:$GIT_COMMIT
+                             --destination=madhubala1997/$REPO:$GIT_COMMIT
             '''
           }
         }
-      }
-    }
-    stage('Test Trigger') {
-      steps {
-         script{
-           def MyClass = load "src/notification.groovy"
-           MyClass.testMethod()
-         }
       }
     }
     stage('Deploy') {
