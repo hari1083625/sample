@@ -12,10 +12,6 @@ pipeline {
 //             ]]
 //         )
 //     }  
-  script{
-     def MyClass = load "src/notification.groovy"
-     MyClass.testMethod()
-   }
   agent {
     kubernetes {
       label 'jenkins-slave'
@@ -44,14 +40,14 @@ pipeline {
         }
       }
     }
-//     stage('Test Trigger') {
-//       steps {
-//          script{
-//            def MyClass = load "src/notification.groovy"
-//            print "Result " + MyClass.testMethod()
-//          }
-//       }
-//     }
+    stage('Test Trigger') {
+      steps {
+         script{
+           def MyClass = load "src/notification.groovy"
+           MyClass.testMethod()
+         }
+      }
+    }
     stage('Deploy') {
       environment {
         GIT_CREDS = credentials('github-token')
