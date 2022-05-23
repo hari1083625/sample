@@ -1,17 +1,21 @@
 pipeline {
-   options {
-        office365ConnectorWebhooks([[
-                    startNotification: true,
-                    notifySuccess: true,
-                    notifyFailure: true,
-                    notifyAborted: true,
-                    notifyBackToNormal: true,
-                    notifyNotBuilt: true,
-                    notifyRepeatedFailure: true,
-                        url: '''https://mindtreeonline.webhook.office.com/webhookb2/329f59da-c0a6-4edb-b0a1-cbd712509488@85c997b9-f494-46b3-a11d-772983cf6f11/IncomingWebhook/716048a3dbcb4ebebc91cdbbf1c536a1/961ab056-0929-4c45-9d67-de9017c84fb0'''
-            ]]
-        )
-    }  
+//    options {
+//         office365ConnectorWebhooks([[
+//                     startNotification: true,
+//                     notifySuccess: true,
+//                     notifyFailure: true,
+//                     notifyAborted: true,
+//                     notifyBackToNormal: true,
+//                     notifyNotBuilt: true,
+//                     notifyRepeatedFailure: true,
+//                         url: '''https://mindtreeonline.webhook.office.com/webhookb2/329f59da-c0a6-4edb-b0a1-cbd712509488@85c997b9-f494-46b3-a11d-772983cf6f11/IncomingWebhook/716048a3dbcb4ebebc91cdbbf1c536a1/961ab056-0929-4c45-9d67-de9017c84fb0'''
+//             ]]
+//         )
+//     }  
+  script{
+     def MyClass = load "src/notification.groovy"
+     MyClass.testMethod()
+   }
   agent {
     kubernetes {
       label 'jenkins-slave'
@@ -40,14 +44,14 @@ pipeline {
         }
       }
     }
-    stage('Test Trigger') {
-      steps {
-         script{
-           def MyClass = load "src/notification.groovy"
-           print "Result " + MyClass.testMethod()
-         }
-      }
-    }
+//     stage('Test Trigger') {
+//       steps {
+//          script{
+//            def MyClass = load "src/notification.groovy"
+//            print "Result " + MyClass.testMethod()
+//          }
+//       }
+//     }
     stage('Deploy') {
       environment {
         GIT_CREDS = credentials('github-token')
