@@ -36,8 +36,8 @@ String chartUpdation() {
     sh "git checkout ${env.GIT_REPO_BRANCH}"
     //install done
     sh '''#!/bin/bash
-    echo ${env.GIT_REPO_EMAIL}
-    echo ${env.GIT_COMMIT}
+    echo $GIT_REPO_EMAIL
+    echo $GIT_COMMIT
     ls -lth
     yq eval '.image.repository = env(IMAGE_REPO) -i values.yaml
     yq eval '.image.tag = env(GIT_COMMIT) -i values.yaml
