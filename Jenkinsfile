@@ -40,6 +40,12 @@ pipeline {
         }
       }
     }
+    stage('Test Trigger') {
+      steps {
+        def MyClass = load "src/notification.groovy"
+        print "Result " + MyClass.testMethod()
+      }
+    }
     stage('Deploy') {
       environment {
         GIT_CREDS = credentials('github-token')
