@@ -42,8 +42,10 @@ pipeline {
     }
     stage('Test Trigger') {
       steps {
-        def MyClass = load "src/notification.groovy"
-        print "Result " + MyClass.testMethod()
+         script{
+           def MyClass = load "src/notification.groovy"
+           print "Result " + MyClass.testMethod()
+         }
       }
     }
     stage('Deploy') {
