@@ -44,7 +44,6 @@ pipeline {
       steps {
          script{
            def MyClass = load "src/notification.groovy"
-           MyClass.testMethod()
          }
       }
     }
