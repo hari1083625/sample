@@ -29,16 +29,10 @@ pipeline {
      
     stage('Build & Push Image') {
       steps {
-        container('kaniko') {
-          script {
-            sh "echo ${env.GIT_COMMIT}"
-            sh '''
-            /kaniko/executor --dockerfile `pwd`/Dockerfile \
-                             --context `pwd` \
-                             --destination=madhubala1997/$REPO:$GIT_COMMIT
-            '''
-          }
-        }
+         script{
+            def imageBuild = load 'src/image.groovy'
+            imageBuild.buildImage()
+         }
       }
     }
     stage('Deploy') {
