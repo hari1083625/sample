@@ -14,7 +14,6 @@ String testMethod() {
             ]]
         )
     }
-  return options
 }
 
 return this
