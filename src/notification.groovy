@@ -1,4 +1,4 @@
-print("Loaded class MyClass.groovy")
+print("Loaded class notification.groovy")
 
 String testMethod() {
   return "OK!"
