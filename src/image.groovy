@@ -39,8 +39,8 @@ String chartUpdation() {
     echo ${env.GIT_REPO_EMAIL}
     echo ${env.GIT_COMMIT}
     ls -lth
-    yq eval '.image.repository = ${env.IMAGE_REPO}' -i values.yaml
-    yq eval '.image.tag = ${env.GIT_COMMIT} -i values.yaml
+    yq eval '.image.repository = env(IMAGE_REPO) -i values.yaml
+    yq eval '.image.tag = env(GIT_COMMIT) -i values.yaml
     cat values.yaml
     pwd
     git add values.yaml
