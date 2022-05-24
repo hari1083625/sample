@@ -12,7 +12,6 @@ pipeline {
             ]]
         )
     }  
-    
     agent {
         kubernetes {
             label 'jenkins-slave'
