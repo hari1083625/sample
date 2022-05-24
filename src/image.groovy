@@ -34,7 +34,7 @@ String chartUpdation() {
           dir("rsvpapp-helm-cicd") {
               sh "git checkout ${env.GIT_REPO_BRANCH}"
             //install done
-            sh '''#!/bin/bash
+            sh "#!/bin/bash
               echo $GIT_REPO_EMAIL
               echo $GIT_COMMIT
               ls -lth
@@ -45,7 +45,7 @@ String chartUpdation() {
               git add values.yaml
               git commit -m 'Triggered Build'
               git push https://${env.GIT_CREDS_USR}:${env.GIT_CREDS_PSW}@github.com/${env.GIT_CREDS_USR}/rsvpapp-helm-cicd.git
-            '''
+            "
           }
             }
 }
