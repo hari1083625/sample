@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Deploy') {
             environment {
-                GIT_CREDS = credentials('github')
+                GIT_CREDS = credentials('github-token')
                 HELM_GIT_REPO_URL = "github.com/madhubala2022/rsvpapp-helm-cicd.git"
                 GIT_REPO_EMAIL = 'madhubala.ravichandran@mindtree.com'
                 GIT_REPO_BRANCH = "master"
