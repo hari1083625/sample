@@ -29,17 +29,24 @@ pipeline {
             }
         }
         stage('Deploy') {
-           environment{
-              GIT_CREDS = credentials('github-token')
+            environment {
+                GIT_CREDS = credentials('github')
+                HELM_GIT_REPO_URL = "github.com/madhubala2022/rsvpapp-helm-cicd.git"
+                GIT_REPO_EMAIL = 'madhubala.ravichandran@mindtree.com'
+                GIT_REPO_BRANCH = "master"
+          
+            // Update above variables with your user details
             }
             steps {
                script{
                     def imageTag = load 'src/image.groovy'
                     imageTag.chartUpdation()
                 }
-                sh "git push https://$GIT_CREDS_USR:$GIT_CREDS_PSW@github.com/$GIT_CREDS_USR/rsvpapp-helm-cicd.git"
-        }
+                sh '''
+                git push https://$GIT_CREDS_USR:$GIT_CREDS_PSW@github.com/$GIT_CREDS_USR/rsvpapp-helm-cicd.git
+                '''
+            }
             
+        }
     } 
-}
 }
