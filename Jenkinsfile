@@ -29,10 +29,10 @@ pipeline {
             }
         }
         stage('Deploy') {
+           environment{
+              GIT_CREDS = credentials('github-token')
+            }
             steps {
-                environment{
-                    GIT_CREDS = credentials('github-token')
-                }
                script{
                     def imageTag = load 'src/image.groovy'
                     imageTag.chartUpdation()
