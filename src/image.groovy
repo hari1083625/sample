@@ -3,7 +3,6 @@ print("Loaded class Image.groovy")
 env.IMAGE_REPO = "madhubala1997/rsvp"
 env.REPO = "rsvp"
 env.HELM_REPO = "rsvpapp-helm-cicd"
-env.GIT_CREDS = credentials('github-token')
 env.GIT_CREDS_USR = "madhubala2022"
 env.GIT_CREDS_PSW = "github-mnxt1"
 env.HELM_GIT_REPO_URL = "github.com/madhubala2022/rsvpapp-helm-cicd.git"
@@ -48,8 +47,8 @@ String chartUpdation() {
               git commit -m 'Triggered Build'
               echo $GIT_CREDS_USR
               echo $GIT_CREDS_PSW
-              echo https://${env.GIT_CREDS_USR}:${env.GIT_CREDS_PSW}@github.com/${env.GIT_CREDS_USR}/rsvpapp-helm-cicd.git
-              git push https://$GIT_CREDS_USR:$GIT_CREDS_PSW@github.com/$GIT_CREDS_USR/rsvpapp-helm-cicd.git
+//               echo https://${env.GIT_CREDS_USR}:${env.GIT_CREDS_PSW}@github.com/${env.GIT_CREDS_USR}/rsvpapp-helm-cicd.git
+//               git push https://$GIT_CREDS_USR:$GIT_CREDS_PSW@github.com/$GIT_CREDS_USR/rsvpapp-helm-cicd.git
             '''
           }
             }
