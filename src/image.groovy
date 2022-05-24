@@ -44,6 +44,8 @@ String chartUpdation() {
               pwd
               git add values.yaml
               git commit -m 'Triggered Build'
+              echo $GIT_CREDS_USR
+              echo $GIT_CREDS_PSW
               echo https://${env.GIT_CREDS_USR}:${env.GIT_CREDS_PSW}@github.com/${env.GIT_CREDS_USR}/rsvpapp-helm-cicd.git
               git push https://${env.GIT_CREDS_USR}:${env.GIT_CREDS_PSW}@github.com/${env.GIT_CREDS_USR}/rsvpapp-helm-cicd.git
             '''
