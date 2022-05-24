@@ -4,7 +4,10 @@ pipeline {
         stage('Hello') {
             steps {
                 echo 'Hello World'
-                echo "$env.BRANCH_NAME"
+                if($env.BRANCH_NAME == 'master')
+{
+  echo "This is the master branch"
+}
             }
         }
     }
