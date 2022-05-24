@@ -1,14 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-                if("$env.BRANCH_NAME" == 'master')
-{
-  echo "This is the master branch"
-}
-            }
+        stage('Step1') {
+        if (env.BRANCH_NAME == 'master') {
+            echo 'Hello from main branch'
+        } else {
+            sh "echo 'Hello from ${env.BRANCH_NAME} branch!'"
         }
+    }
     }
 }
