@@ -4,7 +4,7 @@ pipeline {
         stage('Hello') {
             steps {
                 echo 'Hello World'
-                echo $BRANCH_NAME
+                echo $env.BRANCH_NAME
             }
         }
     }
