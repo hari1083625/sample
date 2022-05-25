@@ -45,7 +45,7 @@ pipeline {
                     imageTag.chartUpdation()
                   }
                   else{
-                        sh "echo 'Hello from ${env.BRANCH_NAME} branch! skipping deploy stage'"
+                        sh "echo 'skipping deploy stage'"
                     }
                     
                 }
