@@ -45,7 +45,7 @@ pipeline {
                     imageTag.chartUpdation()
                   }
                   else{
-                        sh "echo 'skipping deploy stage'"
+                        sh "echo 'skipping deploy stage - Mutlibranch PR'"
                     }
                     
                 }
